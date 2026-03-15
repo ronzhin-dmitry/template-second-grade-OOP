@@ -10,6 +10,9 @@ public:
 
     size_t size()
     {
+        //Тестовое изменение в коде для коммита
+        if(_size < 0)
+            throw std::runtime_error("MemoryManager::size: size is less than zero");
         return _size;
     }
 

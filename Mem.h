@@ -9,11 +9,13 @@ public:
 
     void* allocMem(size_t sz)
     {
+        if(sz > this->size())
+            return nullptr; //Запрошено больше памяти чем есть в бюджете
         return new char[sz];
     }
 
     void freeMem(void* ptr)
     {
-        delete[] ptr;
+        delete[] static_cast<char*>(ptr);
     }
 };

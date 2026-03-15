@@ -19,3 +19,11 @@ BOOST_AUTO_TEST_CASE(mem_allocates_and_frees_block)
 
     mem.freeMem(ptr);
 }
+
+BOOST_AUTO_TEST_CASE(mem_returns_nullptr_for_too_large_allocation)
+{
+   Mem mem(100);
+   void* ptr = mem.allocMem(200); // Запрашиваем больше памяти, чем доступно
+
+   BOOST_TEST(ptr == nullptr); // Ожидаем nullptr
+}
